@@ -1,3 +1,4 @@
+//Time Clock
 var currentDay = document.querySelector("#currentDay");
 var currentTime = moment();
 
@@ -35,7 +36,7 @@ var workHour = {
     }
   }
 
-  
+  // hour counter to apply the color to the text entry
   var counter = 1;
   for(const property in workHour) {
     let textEntry = "#text-entry-" + counter;
@@ -55,7 +56,7 @@ var workHour = {
     }
     counter ++;
   }
-
+// checking for local storage
   $(document).ready(function(){
     if(!localStorage.getItem('workHour')) {
       updateCalendarTasks(workHour);
@@ -63,7 +64,7 @@ var workHour = {
       updateCalendarTasks(JSON.parse(localStorage.getItem('workHour')));
     }
   })
-
+// saves task button
   $("button").click(function() {
     value = $(this).siblings("textarea").val();
     hourString = $(this).siblings("div").text();
@@ -71,7 +72,7 @@ var workHour = {
     saveSchedule(hourString, value);
   });
   
-
+//check if there is any storage
   function saveSchedule(hourString, val) {
     if(!localStorage.getItem('workHour')) {
       createLocalStorage();
@@ -82,7 +83,7 @@ var workHour = {
   
     saveToLocalStorage(workHours);
   }
-
+//creating local storage
   function createLocalStorage() {
     localStorage.setItem('workHour', JSON.stringify(workHour));
   };
